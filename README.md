@@ -17,11 +17,17 @@ We use ViPE to annotate a large-scale collection of videos. This collection incl
 
 To ensure the reproducibility, we recommend creating the runtime environment using [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html).
 
+Download and install visual studio build tools from following link (only install cpp tools, no need to install whole package)
+https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022
+
 ```bash
 # Create a new conda environment and install 3rd-party dependencies
 conda env create -f envs/base.yml
 conda activate vipe
+# requires vs2022 to be installed beforehand
+conda install -c conda-forge cxx-compiler cuda-toolkit
 pip install -r envs/requirements.txt
+pip install "triton-windows<3.5"
 
 # Build the project and install it into the current environment
 # Omit the -e flag to install the project as a regular package
